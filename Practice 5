@@ -1,0 +1,18 @@
+CREATE DATABASE BankDB;
+USE BankDB;
+
+CREATE TABLE accountLists(acc_id INT,name VARCHAR(50),balance DECIMAL(10,2));
+
+INSERT INTO accountLists VALUES (1, 'Alice', 5000.00);
+INSERT INTO accountLists VALUES (2, 'Bob', 3000.00);
+
+START TRANSACTION;
+
+UPDATE accountLists SET balance = balance - 1000 WHERE name = 'Alice';
+UPDATE accountLists SET balance = balance + 1000 WHERE name = 'Bob';
+
+SELECT * FROM accountLists;
+
+ROLLBACK;
+
+SELECT * FROM accountLists;

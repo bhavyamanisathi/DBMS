@@ -1,0 +1,11 @@
+CREATE DATABASE ordersdb;
+USE ordersdb;
+
+CREATE TABLE customer (customer_id INT PRIMARY KEY,customer_name VARCHAR(50),customer_phone VARCHAR(15));
+
+CREATE TABLE product (product_id INT PRIMARY KEY, product_name VARCHAR(50));
+
+CREATE TABLE orders (order_id INT PRIMARY KEY,customer_id INT,product_id INT,quantity INT,
+  FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
+  FOREIGN KEY (product_id) REFERENCES product(product_id));
+  

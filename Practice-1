@@ -1,0 +1,24 @@
+CREATE DATABASE QU1;
+USE QU1;
+ 
+CREATE TABLE departments (dept_id INT PRIMARY KEY,  dept_name VARCHAR(30));
+
+CREATE TABLE employees (emp_id INT PRIMARY KEY, name VARCHAR(30),
+  dept_id INT,
+  salary INT,
+  FOREIGN KEY (dept_id) REFERENCES department(dept_id));
+
+INSERT INTO departments VALUES (1, 'HR'), (2, 'IT'), (3, 'Sales');
+INSERT INTO employees VALUES
+(101, 'Asha', 1, 1000),
+(102, 'Ravi', 2, 2000),
+(103, 'Meena', 2, 4000),
+(104, 'Kiran', 3, 6000);
+
+-- Query
+SELECT d.dept_name,
+       ROUND(AVG(e.salary)) AS avg_salary
+FROM employees e
+JOIN departments d ON e.dept_id = d.dept_id
+GROUP BY d.dept_name
+ORDER BY d.dept_name ASC;

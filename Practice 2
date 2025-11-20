@@ -1,0 +1,13 @@
+CREATE DATABASE CompanyDB;
+USE CompanyDB;
+
+CREATE TABLE employee (emp_id INT, name VARCHAR(50), dept VARCHAR(20));
+
+INSERT INTO employee VALUES (1, 'Asha', 'HR');
+INSERT INTO employee VALUES (2, 'Ravi', 'IT');
+INSERT INTO employee VALUES (3, 'Meena', 'HR');
+INSERT INTO employee VALUES (4, 'Ravi', 'HR'); -- Ravi works in both
+
+SELECT name FROM employee WHERE dept = 'HR'
+EXCEPT
+SELECT name FROM employee WHERE dept = 'IT';

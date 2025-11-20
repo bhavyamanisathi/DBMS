@@ -1,0 +1,14 @@
+CREATE DATABASE companyy;
+USE companyy;
+
+CREATE TABLE employee ( emp_id INT PRIMARY KEY,name VARCHAR(30),dept_id INT,salary INT);
+
+INSERT INTO employee VALUES
+(101, 'Asha', 1, 40000),
+(102, 'Ravi', 1, 95000),
+(103, 'Kiran', 2, 60000),
+(104, 'Meena', 2, 75000);
+
+SELECT name
+FROM employee e
+WHERE salary > (SELECT AVG(salary) FROM employee WHERE dept_id = e.dept_id);
